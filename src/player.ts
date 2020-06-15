@@ -1,6 +1,6 @@
 let findExec = require('find-exec'),
 	cp = require('child_process'),
-	players = ['mplayer', 'afplay', 'mpg123', 'mpg321', 'play', 'omxplayer', 'aplay', 'cmdmp3'];
+    players = 'mplayer'; // ['mplayer', 'afplay', 'mpg123', 'mpg321', 'play', 'omxplayer', 'aplay', 'cmdmp3'];
 let spawn = cp.spawn;
 let globalEventId = 1; //默认为1
 interface Event {
@@ -98,7 +98,7 @@ class Play {
 			}
 		});
 	}
-	play() {
+	public play() {
 		if (this.process) {
 			this.stop();
 		}
@@ -106,7 +106,7 @@ class Play {
 			stdio: 'ignore'
 		}; //执行命令的options
 		if (this.playlist.length > 0 && this.playlist[this.playIndex]) {
-			let args = ['-q', '1', this.playlist[this.playIndex]];
+            let args = [this.playlist[this.playIndex]]; //['-q', '1', this.playlist[this.playIndex]];
 			let soundProcess = spawn(this.player, args, options);
 
 			this.process = soundProcess;
@@ -176,19 +176,19 @@ class Play {
 			this.playIndex = this.playlist.length - 1;
 		}
 	}
-	stop() {
+	public stop() {
 		if (this.process) {
 			this.process.kill('SIGKILL');
 		}
 	}
-	resume() {
+	public resume() {
 		if (this.process) {
 			this.process.kill('SIGCONT');
 		} else {
 			this.play();
 		}
 	}
-	pause() {
+	public pause() {
 		if (this.process) {
 			this.process.kill('SIGSTOP');
 		}
