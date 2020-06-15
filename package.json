@@ -3,7 +3,7 @@
     "displayName": "Type Music",
     "description": "typing with music",
     "version": "0.0.3",
-    "publisher": "xiaomingplus",
+    "publisher": "xiaomingplus, rick@gnous.eu",
     "icon": "icon.png",
     "engines": {
         "vscode": "^1.25.0"
